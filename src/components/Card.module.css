@@ -1,0 +1,11 @@
+.card {
+  background: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.flush {
+  padding: 0;
+  overflow: hidden;
+}

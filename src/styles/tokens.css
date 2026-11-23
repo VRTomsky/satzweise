@@ -1,0 +1,108 @@
+/*
+  Design-Tokens: alle Farben, Abstände, Schriftgrößen und Radien an einer Stelle.
+  Komponenten benutzen nur diese Variablen, nie feste Farbwerte.
+  Der Dunkelmodus tauscht nur die Farbwerte aus.
+*/
+
+:root {
+  /* Farben – hell */
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f4f5;
+  --color-border: #e4e4e7;
+  --color-border-strong: #d4d4d8;
+  --color-text: #18181b;
+  --color-text-2: #52525b;
+  --color-text-3: #6b6b74;
+  --color-accent: #2f6b4f;
+  --color-accent-hover: #285c44;
+  --color-accent-text: #2a6248;
+  --color-accent-soft: #e7f0eb;
+  --color-on-accent: #ffffff;
+  --color-danger: #b42318;
+  --color-danger-soft: #fdecea;
+  --color-focus: #2f6b4f;
+  --color-scrim: rgb(9 9 11 / 0.4);
+
+  /* Schrift */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --text-xl: 1.75rem; /* 28 px – Seitentitel */
+  --text-lg: 1.25rem; /* 20 px – Abschnitte */
+  --text-md: 1rem; /* 16 px – Fließtext */
+  --text-sm: 0.875rem; /* 14 px – Zusatzinfos */
+  --text-xs: 0.75rem; /* 12 px – Tab-Leiste, kleine Labels */
+  --leading: 1.5;
+  --leading-tight: 1.25;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Abstände (4/8-px-Raster) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Formen */
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-full: 999px;
+  --border: 1px solid var(--color-border);
+  --touch: 44px;
+
+  /* Layout */
+  --content-max: 640px;
+  --tabbar-height: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+
+  /* Bewegung */
+  --duration: 160ms;
+  --duration-slow: 200ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Ebenen */
+  --z-sticky: 10;
+  --z-bar: 20;
+  --z-sheet: 40;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #111113;
+    --color-surface: #18181b;
+    --color-surface-2: #222226;
+    --color-border: #2c2c31;
+    --color-border-strong: #3f3f46;
+    --color-text: #f4f4f5;
+    --color-text-2: #b4b4bb;
+    --color-text-3: #95959d;
+    --color-accent: #6fbf95;
+    --color-accent-hover: #82cba4;
+    --color-accent-text: #7cc9a0;
+    --color-accent-soft: #1a2c22;
+    --color-on-accent: #0b1c13;
+    --color-danger: #f1857b;
+    --color-danger-soft: #3a1c19;
+    --color-focus: #7cc9a0;
+    --color-scrim: rgb(0 0 0 / 0.6);
+
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 0ms;
+    --duration-slow: 0ms;
+  }
+}

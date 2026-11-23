@@ -1,0 +1,6 @@
+.main {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--safe-top) var(--space-4)
+    calc(var(--tabbar-height) + var(--safe-bottom) + var(--bottom-extra, 0px) + var(--space-10));
+}
