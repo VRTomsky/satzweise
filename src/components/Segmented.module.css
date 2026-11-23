@@ -1,0 +1,28 @@
+.segmented {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius);
+  background: var(--color-surface-2);
+}
+
+.option {
+  flex: 1;
+  min-height: 38px;
+  border: 0;
+  border-radius: calc(var(--radius) - 3px);
+  background: transparent;
+  color: var(--color-text-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  transition:
+    background-color var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.option[aria-pressed='true'] {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  box-shadow: 0 0 0 1px var(--color-border);
+}

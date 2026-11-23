@@ -381,3 +381,28 @@
 .choiceCheck {
   color: var(--color-accent-text);
 }
+
+/* ---------- Serie ---------- */
+
+.streak {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: calc(var(--space-2) * -1);
+  color: var(--color-text-2);
+  font-size: var(--text-sm);
+}
+
+.streak strong {
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+}
+
+.streakIcon {
+  flex: none;
+  color: var(--color-accent-text);
+}
+
+.streakBest {
+  color: var(--color-text-3);
+}

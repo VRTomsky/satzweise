@@ -4,6 +4,7 @@ import { useEffect, useMemo, useReducer, useState, type ReactNode } from 'react'
 import { createDefaultData } from '../data/defaults';
 import type { AppData, IsoDate } from '../data/types';
 import { todayIso } from '../domain/dates';
+import { evaluateMilestones } from '../domain/milestones';
 import { storage } from '../services/storage';
 import { AppStateContext } from './context';
 import { reducer } from './reducer';
@@ -11,7 +12,9 @@ import { parseAppData } from './schema';
 
 function loadInitial(): AppData {
   const today = todayIso();
-  return parseAppData(storage.load(), today) ?? createDefaultData(today);
+  const data = parseAppData(storage.load(), today) ?? createDefaultData(today);
+  // Etappen beim Start einmal neu prüfen, falls sich die Regeln geändert haben.
+  return { ...data, milestones: evaluateMilestones(data.milestones, data) };
 }
 
 /** Aktuelles Datum, das sich um Mitternacht und beim Zurückkehren in die App aktualisiert. */

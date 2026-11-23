@@ -23,6 +23,7 @@ import {
 import { BasicsBlocks } from '../features/basics/BasicsContent';
 import { ChooseWorkoutSheet } from '../features/today/ChooseWorkoutSheet';
 import { ExerciseItem } from '../features/today/ExerciseItem';
+import { StreakLine } from '../features/today/StreakLine';
 import styles from '../features/today/Today.module.css';
 import { Warmup } from '../features/today/Warmup';
 import { useWakeLock } from '../services/wakeLock';
@@ -81,6 +82,8 @@ export function TodayPage() {
       />
 
       <div className={styles.stack}>
+        <StreakLine />
+
         {paused && (
           <Card className={styles.status}>
             <CirclePause {...icon} className={styles.statusIcon} />
