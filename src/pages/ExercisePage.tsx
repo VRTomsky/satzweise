@@ -6,7 +6,7 @@ import { PageHeader } from '../components/PageHeader';
 import { Section } from '../components/Section';
 import { getExercise } from '../data/exercises';
 import { getWorkout, WORKOUTS } from '../data/plan';
-import { formatBench, formatRest, formatTarget } from '../domain/format';
+import { formatBench, formatTarget } from '../domain/format';
 import { ExerciseImages } from '../features/exercise/ExerciseImages';
 import styles from '../features/exercise/Exercise.module.css';
 import { useApp } from '../state/useApp';
@@ -35,7 +35,12 @@ export function ExercisePage() {
     ? [
         ['Sätze', formatTarget(planned, exercise, planned.sets)],
         ...(planned.tempo ? [['Tempo', planned.tempo] as [string, string]] : []),
-        ['Pause', formatRest(planned)],
+        [
+          'Pause',
+          planned.restSec === 0
+            ? 'direkt weiter zur nächsten Übung'
+            : `${planned.restSec} s${planned.supersetGroup ? ' nach dem Paar' : ''}`,
+        ],
         ['Start', planned.startLoad],
         ['Bank', bench ?? 'ohne Bank'],
       ]

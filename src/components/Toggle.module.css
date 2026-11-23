@@ -27,7 +27,7 @@
   width: 52px;
   height: 32px;
   padding: 0;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-control);
   border-radius: var(--radius-full);
   background: var(--color-surface-2);
   transition:

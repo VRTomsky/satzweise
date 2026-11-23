@@ -115,11 +115,9 @@ export function TodayPage() {
           <Card className={styles.status}>
             <CircleCheck {...icon} className={styles.statusIconDone} />
             <div className={styles.statusText}>
-              <p className={styles.statusTitle}>
-                {isStrength ? 'Training abgeschlossen' : 'Erledigt'}
-              </p>
+              <p className={styles.statusTitle}>Erledigt</p>
               <p className={`${styles.meta} num`}>
-                um {timeOf(log.completedAt)} Uhr
+                {isStrength ? 'Abgeschlossen' : 'Erledigt'} um {timeOf(log.completedAt)} Uhr
                 {isStrength && ` · ${done} von ${total} Sätzen`}
               </p>
             </div>

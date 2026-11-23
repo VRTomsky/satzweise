@@ -15,7 +15,7 @@
 .image {
   width: 100%;
   height: auto;
-  aspect-ratio: 850 / 567;
+  aspect-ratio: 640 / 427;
   object-fit: cover;
   border: var(--border);
   border-radius: var(--radius);

@@ -11,6 +11,8 @@
   --color-surface-2: #f4f4f5;
   --color-border: #e4e4e7;
   --color-border-strong: #d4d4d8;
+  /* Rahmen von Bedienelementen (Felder, Abhak-Kästchen): mind. 3:1 Kontrast */
+  --color-control: #8a8a93;
   --color-text: #18181b;
   --color-text-2: #52525b;
   --color-text-3: #6b6b74;
@@ -85,6 +87,7 @@
     --color-surface-2: #222226;
     --color-border: #2c2c31;
     --color-border-strong: #3f3f46;
+    --color-control: #71717a;
     --color-text: #f4f4f5;
     --color-text-2: #b4b4bb;
     --color-text-3: #95959d;

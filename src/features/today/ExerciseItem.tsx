@@ -68,7 +68,10 @@ export function ExerciseItem({ planned, workoutId, date, sets, onShowTips }: Pro
 
       <div className={styles.setHeader} aria-hidden>
         <span>Satz</span>
-        <span>{unit}</span>
+        <span>
+          {unit}
+          {data.settings.showWeightField && ' und Gewicht'}
+        </span>
       </div>
       <ul className={styles.sets}>
         {Array.from({ length: sets }, (_, i) => {

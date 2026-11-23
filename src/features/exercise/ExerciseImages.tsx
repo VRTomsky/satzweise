@@ -23,8 +23,8 @@ export function ExerciseImages({ exercise }: { exercise: Exercise }) {
             <img
               src={`${import.meta.env.BASE_URL}${src}`}
               alt={`${exercise.name}: ${i === 0 ? 'Startposition' : 'Endposition'}`}
-              width={850}
-              height={567}
+              width={640}
+              height={427}
               loading="lazy"
               decoding="async"
               className={styles.image}
