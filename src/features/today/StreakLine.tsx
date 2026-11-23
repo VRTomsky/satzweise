@@ -4,7 +4,7 @@ import { bestStreak, currentStreak } from '../../domain/streak';
 import { useApp } from '../../state/useApp';
 import styles from './Today.module.css';
 
-const days = (n: number) => `${n} ${n === 1 ? 'Tag' : 'Tagen'}`;
+const days = (n: number) => `${n} ${n === 1 ? 'Tag' : 'Tage'}`;
 
 /** Nüchterne Anzeige der Serie: aktuell und beste. */
 export function StreakLine() {
