@@ -1,4 +1,4 @@
-import { CalendarClock, CircleCheck, Info, CirclePause } from 'lucide-react';
+import { Bell, CalendarClock, CircleCheck, CirclePause, Info } from 'lucide-react';
 import { useState } from 'react';
 import { Banner } from '../components/Banner';
 import { Button } from '../components/Button';
@@ -20,13 +20,15 @@ import {
   totalSets,
   workoutForDay,
 } from '../domain/schedule';
-import { BasicsBlocks } from '../features/basics/BasicsContent';
+import { BasicsBlocks } from '../features/basics/BasicsBlocks';
 import { ChooseWorkoutSheet } from '../features/today/ChooseWorkoutSheet';
 import { ExerciseItem } from '../features/today/ExerciseItem';
 import { StreakLine } from '../features/today/StreakLine';
 import styles from '../features/today/Today.module.css';
 import { Warmup } from '../features/today/Warmup';
+import { isReminderDue } from '../services/reminders';
 import { useWakeLock } from '../services/wakeLock';
+import { useNow } from '../state/useNow';
 import { useApp } from '../state/useApp';
 
 function subtitleFor(workout: Workout): string {
@@ -51,6 +53,9 @@ export function TodayPage() {
   const paused = Boolean(log?.paused);
   const isStrength = workout.kind === 'kraft';
   const deload = isStrength && isDeloadWeek(data.settings.startDate, today);
+  const now = useNow();
+  const showReminder =
+    workout.kind !== 'ruhe' && !completed && !paused && isReminderDue(data.settings.reminder, now);
 
   const total = totalSets(workout, deload);
   const done = workout.exercises.reduce((sum, ex) => {
@@ -83,6 +88,12 @@ export function TodayPage() {
 
       <div className={styles.stack}>
         <StreakLine />
+
+        {showReminder && (
+          <Banner icon={<Bell {...icon} />}>
+            <strong>Heute: {workout.name}</strong> – noch offen.
+          </Banner>
+        )}
 
         {paused && (
           <Card className={styles.status}>

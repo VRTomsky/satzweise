@@ -1,5 +1,5 @@
 import type { BasicsSection } from '../../data/basics';
-import styles from './BasicsContent.module.css';
+import styles from './BasicsBlocks.module.css';
 
 /** Zeigt einen Abschnitt der Grundlagen (Text, Listen, Zwischenüberschriften). */
 export function BasicsBlocks({ section }: { section: BasicsSection }) {
