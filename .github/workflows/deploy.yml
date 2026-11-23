@@ -24,7 +24,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      # npm install statt npm ci: das Lockfile entsteht unter Windows, und npm ci scheitert
+      # auf Linux an optionalen WebAssembly-Paketen, die es dort anders auflöst.
+      - run: npm install --no-audit --no-fund
       - run: npm run lint
       - run: npm test
       - run: npm run build
