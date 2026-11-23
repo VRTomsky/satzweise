@@ -1,8 +1,26 @@
 // Dateien speichern und lesen (Export/Import).
-// In der APK später über @capacitor/filesystem und @capacitor/share.
+// App: Datei in den Cache schreiben und über „Teilen“ speichern (z. B. in Drive oder Downloads).
+// Browser: normaler Download.
 
-export function downloadJson(filename: string, data: unknown): void {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
+import { isNativeApp } from './platform';
+
+export async function saveJsonFile(filename: string, data: unknown): Promise<void> {
+  const json = JSON.stringify(data, null, 2);
+
+  if (isNativeApp) {
+    const { uri } = await Filesystem.writeFile({
+      path: filename,
+      data: json,
+      directory: Directory.Cache,
+      encoding: Encoding.UTF8,
+    });
+    await Share.share({ title: 'Satzweise-Sicherung', files: [uri] });
+    return;
+  }
+
+  const blob = new Blob([json], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;

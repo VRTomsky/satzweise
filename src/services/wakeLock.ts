@@ -1,16 +1,13 @@
-// Bildschirm anlassen während des Trainings (Screen Wake Lock API).
-// In der APK später z. B. über @capacitor-community/keep-awake.
+// Bildschirm anlassen während des Trainings.
+// App: @capacitor-community/keep-awake. Browser: Screen Wake Lock API.
 
+import { KeepAwake } from '@capacitor-community/keep-awake';
 import { useEffect } from 'react';
+import { isNativeApp } from './platform';
 
-export function isWakeLockSupported(): boolean {
-  return 'wakeLock' in navigator;
-}
-
-/** Hält den Bildschirm an, solange `active` true ist. */
-export function useWakeLock(active: boolean): void {
+function useBrowserWakeLock(active: boolean): void {
   useEffect(() => {
-    if (!active || !isWakeLockSupported()) return;
+    if (isNativeApp || !active || !('wakeLock' in navigator)) return;
 
     let sentinel: WakeLockSentinel | null = null;
     let cancelled = false;
@@ -40,4 +37,20 @@ export function useWakeLock(active: boolean): void {
       void sentinel?.release();
     };
   }, [active]);
+}
+
+function useNativeKeepAwake(active: boolean): void {
+  useEffect(() => {
+    if (!isNativeApp || !active) return;
+    void KeepAwake.keepAwake().catch(() => undefined);
+    return () => {
+      void KeepAwake.allowSleep().catch(() => undefined);
+    };
+  }, [active]);
+}
+
+/** Hält den Bildschirm an, solange `active` true ist. */
+export function useWakeLock(active: boolean): void {
+  useBrowserWakeLock(active);
+  useNativeKeepAwake(active);
 }

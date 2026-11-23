@@ -9,6 +9,7 @@ import { getWorkout, WORKOUTS } from '../data/plan';
 import { formatBench, formatTarget } from '../domain/format';
 import { ExerciseImages } from '../features/exercise/ExerciseImages';
 import styles from '../features/exercise/Exercise.module.css';
+import { externalLinkProps, isNativeApp } from '../services/platform';
 import { useApp } from '../state/useApp';
 
 export function ExercisePage() {
@@ -88,13 +89,12 @@ export function ExercisePage() {
       <div className={styles.video}>
         <a
           href={youtubeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...externalLinkProps}
           className={`${buttonStyles.button} ${buttonStyles.secondary} ${buttonStyles.block}`}
         >
           <ExternalLink {...icon} />
           Video auf YouTube suchen
-          <span className="visually-hidden"> (öffnet in neuem Tab)</span>
+          {!isNativeApp && <span className="visually-hidden"> (öffnet in neuem Tab)</span>}
         </a>
       </div>
     </>

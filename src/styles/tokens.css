@@ -64,8 +64,9 @@
   /* Layout */
   --content-max: 640px;
   --tabbar-height: 64px;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-top: env(safe-area-inset-top, 0px);
+  /* In der App setzt Capacitor --safe-area-inset-*, im Browser gilt env() */
+  --safe-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 
   /* Bewegung */
   --duration: 160ms;

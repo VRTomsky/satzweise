@@ -1,12 +1,15 @@
 // Tägliche Erinnerung zur eingestellten Uhrzeit.
 //
-// Ehrlich gesagt: Im Browser kann eine Webseite nur dann etwas tun, wenn sie offen ist
-// (oder als installierte App noch im Hintergrund läuft). Ist sie ganz geschlossen,
-// kommt keine Erinnerung. Deshalb zeigt die App zusätzlich ein Banner, wenn du sie nach
-// der Erinnerungszeit öffnest. In der APK ersetzt @capacitor/local-notifications diese
-// Datei: Dort plant das Handy die Erinnerung selbst, auch wenn die App zu ist.
+// Browser: Eine Webseite kann nur etwas tun, solange sie offen ist (oder als installierte
+// App im Hintergrund läuft). Ist sie ganz geschlossen, kommt keine Erinnerung. Deshalb
+// zeigt die App zusätzlich ein Banner, wenn du sie nach der Erinnerungszeit öffnest.
+//
+// Android-App: Das Handy plant die Erinnerungen selbst (@capacitor/local-notifications).
+// Sie kommen auch, wenn die App geschlossen ist.
 
-import type { ReminderSettings } from '../data/types';
+import { LocalNotifications } from '@capacitor/local-notifications';
+import type { IsoDate, ReminderSettings } from '../data/types';
+import type { ReminderDay } from '../domain/reminderDays';
 
 /** Minuten seit Mitternacht für "HH:MM". */
 export function minutesOf(time: string): number {
@@ -28,7 +31,7 @@ export function msUntilNext(time: string, now: Date): number {
   return target.getTime() - now.getTime();
 }
 
-/** Plant die Erinnerung jeden Tag neu. Gibt eine Funktion zum Abbrechen zurück. */
+/** Browser: plant die Erinnerung jeden Tag neu. Gibt eine Funktion zum Abbrechen zurück. */
 export function scheduleDailyReminder(time: string, onFire: () => void): () => void {
   let id: number | undefined;
   const plan = () => {
@@ -42,4 +45,36 @@ export function scheduleDailyReminder(time: string, onFire: () => void): () => v
   };
   plan();
   return () => window.clearTimeout(id);
+}
+
+/** Eindeutige Nummer pro Tag, z. B. 20261124. */
+const idFor = (date: IsoDate) => Number(date.replaceAll('-', ''));
+
+function dateAt(date: IsoDate, time: string): Date {
+  const [y, m, d] = date.split('-').map(Number);
+  const minutes = minutesOf(time);
+  return new Date(y, m - 1, d, Math.floor(minutes / 60), minutes % 60);
+}
+
+/** App: alte Erinnerungen löschen und die nächsten Tage neu planen. */
+export async function scheduleNativeReminders(time: string, days: ReminderDay[]): Promise<void> {
+  await cancelNativeReminders();
+  const now = Date.now();
+  const notifications = days
+    .map((day) => ({ day, at: dateAt(day.date, time) }))
+    .filter(({ at }) => at.getTime() > now)
+    .map(({ day, at }) => ({
+      id: idFor(day.date),
+      title: `Heute: ${day.workoutName}`,
+      body: 'Noch offen. Leg los, wenn du so weit bist.',
+      schedule: { at, allowWhileIdle: true },
+    }));
+  if (notifications.length > 0) await LocalNotifications.schedule({ notifications });
+}
+
+export async function cancelNativeReminders(): Promise<void> {
+  const { notifications } = await LocalNotifications.getPending();
+  if (notifications.length > 0) {
+    await LocalNotifications.cancel({ notifications: notifications.map((n) => ({ id: n.id })) });
+  }
 }

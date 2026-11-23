@@ -5,7 +5,7 @@ import { ConfirmDialog } from '../../components/ConfirmDialog';
 import { icon } from '../../components/icon';
 import type { AppData } from '../../data/types';
 import { evaluateMilestones } from '../../domain/milestones';
-import { downloadJson, readJsonFile } from '../../services/files';
+import { readJsonFile, saveJsonFile } from '../../services/files';
 import { storage } from '../../services/storage';
 import { parseImportFile, toExportFile } from '../../state/schema';
 import { useApp } from '../../state/useApp';
@@ -41,9 +41,13 @@ export function DataSettings() {
       <div className={styles.buttons}>
         <Button
           icon={<Download {...icon} />}
-          onClick={() => {
-            downloadJson(`satzweise-${today}.json`, toExportFile(data));
-            setMessage({ text: 'Export gespeichert.' });
+          onClick={async () => {
+            try {
+              await saveJsonFile(`satzweise-${today}.json`, toExportFile(data));
+              setMessage({ text: 'Export gespeichert.' });
+            } catch {
+              setMessage({ text: 'Export abgebrochen.', error: true });
+            }
           }}
         >
           Daten exportieren

@@ -5,6 +5,7 @@ Messwerte mit Diagramm und Etappen zu meinem Ziel. Kein Login, kein Server, alle
 auf dem Gerät. Läuft offline und lässt sich als App auf dem Handy installieren.
 
 **Online:** https://vrtomsky.github.io/satzweise/
+**Android-App:** https://github.com/VRTomsky/satzweise/releases/latest/download/Satzweise.apk
 
 ## Projekt starten
 
@@ -143,35 +144,57 @@ Danach läuft die App auch ohne Internet.
   Ist sie ganz geschlossen, kann eine Webseite ohne Server nichts auslösen.
 - **Banner:** Öffnest du die App nach der Erinnerungszeit und hast noch nicht trainiert, steht
   oben auf „Heute“ ein Hinweis. Das funktioniert immer.
-- **In der APK:** Mit `@capacitor/local-notifications` plant das Handy die Erinnerung selbst. Sie
-  kommt dann zuverlässig, auch wenn die App geschlossen ist. Dafür muss nur
-  `src/services/reminders.ts` ausgetauscht werden.
+- **In der Android-App:** Mit `@capacitor/local-notifications` plant das Handy die Erinnerungen
+  für die nächsten 7 Tage selbst (nur Trainingstage, die noch offen sind). Sie kommen auch, wenn
+  die App geschlossen ist.
 
-## Später: Android-APK mit Capacitor
+## Android-App (APK)
 
-Die App ist dafür vorbereitet: Alle Pfade sind relativ zum `base`-Pfad, und alles
-Gerätespezifische läuft über `src/services/`. Die Schritte:
+Die App gibt es auch als Android-App (Capacitor). Der Workflow `.github/workflows/apk.yml` baut
+sie bei jedem Push auf `main` und veröffentlicht sie als GitHub-Release.
 
-1. Capacitor installieren:
-   ```bash
-   npm install @capacitor/core @capacitor/android
-   npm install -D @capacitor/cli
-   npx cap init Satzweise de.satzweise.app --web-dir dist
-   ```
-2. Mit relativem Pfad bauen: `BASE=./ npm run build` (in PowerShell: `$env:BASE='./'; npm run build`).
-3. Android-Projekt anlegen und Dateien kopieren:
-   ```bash
-   npx cap add android
-   npx cap sync android
-   ```
-4. In [Android Studio](https://developer.android.com/studio) öffnen (`npx cap open android`) und
-   über **Build → Build APK(s)** die APK erstellen.
-5. Gerätefunktionen austauschen (nur in `src/services/`):
-   - Erinnerungen: `@capacitor/local-notifications` in `reminders.ts` und `notifications.ts`
-   - Vibration: `@capacitor/haptics` in `vibration.ts`
-   - Bildschirm anlassen: `@capacitor-community/keep-awake` in `wakeLock.ts`
-   - Speichern: optional `@capacitor/preferences` in `storage.ts`
-   - Export/Import: `@capacitor/filesystem` und `@capacitor/share` in `files.ts`
+**Neueste APK herunterladen (direkt am Handy öffnen):**
+https://github.com/VRTomsky/satzweise/releases/latest/download/Satzweise.apk
+
+### Auf dem Samsung installieren
+
+1. Den Link oben in Chrome öffnen, die Datei wird heruntergeladen.
+2. Auf die Datei tippen. Beim ersten Mal fragt Android, ob Chrome Apps installieren darf:
+   **Einstellungen → Diese Quelle zulassen** einschalten, zurück, **Installieren**.
+3. Falls Google Play Protect warnt („Unbekannte App“): **Trotzdem installieren**. Die App kommt
+   nicht aus dem Play Store, deshalb kennt Google sie nicht.
+4. Updates: einfach die neueste APK genauso installieren. Sie ersetzt die alte, deine Daten bleiben.
+
+**Wichtig:** Die App speichert ihre Daten getrennt von der Webseite. Willst du Daten mitnehmen,
+exportiere sie auf der Webseite (**Einstellungen → Daten exportieren**) und importiere sie in der App.
+
+### Was in der App anders ist
+
+| Funktion      | Webseite                                 | Android-App                                        |
+| ------------- | ---------------------------------------- | -------------------------------------------------- |
+| Erinnerung    | nur solange die Seite läuft, plus Banner | plant das Handy selbst, auch bei geschlossener App |
+| Vibration     | `navigator.vibrate`                      | `@capacitor/haptics`                               |
+| Bildschirm an | Screen Wake Lock API                     | `@capacitor-community/keep-awake`                  |
+| Export        | Datei-Download                           | „Teilen“-Menü (z. B. Drive, Downloads)             |
+
+Alles davon steckt in `src/services/`. `src/services/platform.ts` erkennt, ob die App gerade
+nativ läuft.
+
+### Selbst bauen (optional)
+
+Dafür brauchst du [Android Studio](https://developer.android.com/studio) mit JDK 21.
+
+```bash
+npm run apk:sync          # Webteil für die App bauen und ins Android-Projekt kopieren
+npx cap open android      # in Android Studio öffnen, dann Build → Build APK(s)
+```
+
+Icons und Startbildschirm kommen aus `assets/` und werden mit
+`npx capacitor-assets generate --android` erzeugt.
+
+**Signaturschlüssel:** `android/app/satzweise.keystore` liegt bewusst im Repo, damit jede neue
+APK die alte ersetzen kann. Er ist damit öffentlich. Installiere Satzweise deshalb nur aus den
+Releases dieses Repos.
 
 ## Technik
 

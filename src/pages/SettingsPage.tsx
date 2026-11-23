@@ -14,6 +14,7 @@ import { isIsoDate, WEEKDAY_NAMES } from '../domain/dates';
 import { DataSettings } from '../features/settings/DataSettings';
 import { ReminderSettings } from '../features/settings/ReminderSettings';
 import styles from '../features/settings/Settings.module.css';
+import { externalLinkProps } from '../services/platform';
 import { useApp } from '../state/useApp';
 
 const BENCH_ORDER: BenchSetting[] = ['flach', '30°', '30–45°', '45°', 'fast senkrecht'];
@@ -149,11 +150,7 @@ export function SettingsPage() {
           <div>
             <dt>Übungsbilder</dt>
             <dd>
-              <a
-                href="https://github.com/yuhonas/free-exercise-db"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://github.com/yuhonas/free-exercise-db" {...externalLinkProps}>
                 free-exercise-db
               </a>{' '}
               von yuhonas, Public Domain (Unlicense)

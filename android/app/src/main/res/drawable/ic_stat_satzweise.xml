@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kleines Benachrichtigungs-Icon: weiße Hantel, Android färbt es selbst ein. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path android:fillColor="#FFFFFFFF" android:pathData="M106,190h16a14,14 0,0 1,14 14v104a14,14 0,0 1,-14 14h-16a14,14 0,0 1,-14 -14v-104a14,14 0,0 1,14 -14z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M390,190h16a14,14 0,0 1,14 14v104a14,14 0,0 1,-14 14h-16a14,14 0,0 1,-14 -14v-104a14,14 0,0 1,14 -14z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M164,150h20a16,16 0,0 1,16 16v180a16,16 0,0 1,-16 16h-20a16,16 0,0 1,-16 -16v-180a16,16 0,0 1,16 -16z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M328,150h20a16,16 0,0 1,16 16v180a16,16 0,0 1,-16 16h-20a16,16 0,0 1,-16 -16v-180a16,16 0,0 1,16 -16z"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M200,234h112v44h-112z"/>
+</vector>
