@@ -1,6 +1,8 @@
 // Alle Übungen mit Ausführung, häufigen Fehlern und Bildern.
 // Bilder: free-exercise-db (Public Domain), kopiert nach public/exercises/.
-// Leeres images-Array = es gibt kein passendes Bild, die App zeigt einen Platzhalter.
+// Leeres images-Array = kein passendes Bild, die App zeigt dann einen Platzhalter.
+// Thruster und einbeiniges Kreuzheben zeigen Kettlebells, Hip Thrust eine Langhantel:
+// gleiche Bewegung, nur anderes Gewicht.
 
 import type { Exercise } from './types';
 
@@ -25,7 +27,7 @@ export const EXERCISES: Exercise[] = [
       'Po hebt von der Bank ab oder die Füße wandern.',
       'Die Hanteln fallen nach unten, statt kontrolliert abgesenkt zu werden.',
     ],
-    images: [],
+    images: ['exercises/Dumbbell_Bench_Press/0.jpg', 'exercises/Dumbbell_Bench_Press/1.jpg'],
     youtubeQuery: yt('Kurzhantel Bankdrücken'),
   },
   {
@@ -45,7 +47,7 @@ export const EXERCISES: Exercise[] = [
       'Hohlkreuz, der Po rutscht von der Bank.',
       'Hanteln über dem Hals statt über der oberen Brust.',
     ],
-    images: [],
+    images: ['exercises/Incline_Dumbbell_Press/0.jpg', 'exercises/Incline_Dumbbell_Press/1.jpg'],
     youtubeQuery: yt('Schrägbankdrücken'),
   },
   {
@@ -65,7 +67,7 @@ export const EXERCISES: Exercise[] = [
       'Arme ganz durchdrücken und oben die Hanteln zusammenschlagen.',
       'Zu schweres Gewicht, das nur mit Schwung hochgeht.',
     ],
-    images: [],
+    images: ['exercises/Seated_Dumbbell_Press/0.jpg', 'exercises/Seated_Dumbbell_Press/1.jpg'],
     youtubeQuery: yt('Schulterdrücken sitzend'),
   },
   {
@@ -87,7 +89,7 @@ export const EXERCISES: Exercise[] = [
       'Hantel zur Brust statt zur Hüfte ziehen.',
       'Schwung aus den Beinen holen.',
     ],
-    images: [],
+    images: ['exercises/One-Arm_Dumbbell_Row/0.jpg', 'exercises/One-Arm_Dumbbell_Row/1.jpg'],
     youtubeQuery: yt('Einarmiges Kurzhantelrudern'),
   },
   {
@@ -107,7 +109,7 @@ export const EXERCISES: Exercise[] = [
       'Schwung aus dem Oberkörper oder den Knien.',
       'Schultern zu den Ohren hochziehen.',
     ],
-    images: [],
+    images: ['exercises/Side_Lateral_Raise/0.jpg', 'exercises/Side_Lateral_Raise/1.jpg'],
     youtubeQuery: yt('Seitheben'),
   },
   {
@@ -127,7 +129,7 @@ export const EXERCISES: Exercise[] = [
       'Oberkörper schwingt mit.',
       'Arme unten nicht ganz absenken.',
     ],
-    images: [],
+    images: ['exercises/Dumbbell_Bicep_Curl/0.jpg', 'exercises/Dumbbell_Bicep_Curl/1.jpg'],
     youtubeQuery: yt('Bizeps Curls'),
   },
   {
@@ -147,7 +149,10 @@ export const EXERCISES: Exercise[] = [
       'Hohlkreuz. Spann Bauch und Po an.',
       'Zu schnell absenken, die Hantel kommt dem Kopf zu nah.',
     ],
-    images: [],
+    images: [
+      'exercises/Standing_Dumbbell_Triceps_Extension/0.jpg',
+      'exercises/Standing_Dumbbell_Triceps_Extension/1.jpg',
+    ],
     youtubeQuery: yt('Trizepsdrücken über Kopf'),
   },
 
@@ -169,7 +174,7 @@ export const EXERCISES: Exercise[] = [
       'Fersen heben vom Boden ab.',
       'Oberkörper kippt stark nach vorne.',
     ],
-    images: [],
+    images: ['exercises/Goblet_Squat/0.jpg', 'exercises/Goblet_Squat/1.jpg'],
     youtubeQuery: yt('Goblet Squat'),
   },
   {
@@ -191,7 +196,10 @@ export const EXERCISES: Exercise[] = [
       'Vorderer Fuß steht zu nah an der Bank.',
       'Mit dem hinteren Bein abdrücken statt mit dem vorderen.',
     ],
-    images: [],
+    images: [
+      'exercises/Split_Squat_with_Dumbbells/0.jpg',
+      'exercises/Split_Squat_with_Dumbbells/1.jpg',
+    ],
     youtubeQuery: yt('Bulgarian Split Squat'),
   },
   {
@@ -211,7 +219,10 @@ export const EXERCISES: Exercise[] = [
       'Hanteln entfernen sich von den Beinen.',
       'Zu tief gehen, obwohl der Rücken nicht mehr gerade bleibt.',
     ],
-    images: [],
+    images: [
+      'exercises/Stiff-Legged_Dumbbell_Deadlift/0.jpg',
+      'exercises/Stiff-Legged_Dumbbell_Deadlift/1.jpg',
+    ],
     youtubeQuery: yt('Rumänisches Kreuzheben'),
   },
   {
@@ -232,7 +243,7 @@ export const EXERCISES: Exercise[] = [
       'Füße zu weit vorne. Dann arbeiten vor allem die hinteren Oberschenkel.',
       'Bank steht nicht fest.',
     ],
-    images: [],
+    images: ['exercises/Barbell_Hip_Thrust/0.jpg', 'exercises/Barbell_Hip_Thrust/1.jpg'],
     youtubeQuery: yt('Hip Thrust'),
   },
   {
@@ -249,7 +260,10 @@ export const EXERCISES: Exercise[] = [
       'Senke die Ferse langsam ganz ab.',
     ],
     mistakes: ['Nur halbe Bewegung.', 'Wippen statt kontrolliert hoch und runter.'],
-    images: [],
+    images: [
+      'exercises/Standing_Dumbbell_Calf_Raise/0.jpg',
+      'exercises/Standing_Dumbbell_Calf_Raise/1.jpg',
+    ],
     youtubeQuery: yt('Einbeiniges Wadenheben'),
   },
   {
@@ -264,7 +278,7 @@ export const EXERCISES: Exercise[] = [
       'Spann Bauch und Po an und atme ruhig weiter.',
     ],
     mistakes: ['Po hängt durch.', 'Po ragt zu weit nach oben.', 'Luft anhalten.'],
-    images: [],
+    images: ['exercises/Plank/0.jpg', 'exercises/Plank/1.jpg'],
     youtubeQuery: 'Plank Unterarmstütz richtige Ausführung',
   },
   {
@@ -281,7 +295,7 @@ export const EXERCISES: Exercise[] = [
       'Zurück in die Ausgangsposition, dann die andere Seite.',
     ],
     mistakes: ['Der untere Rücken hebt sich vom Boden.', 'Zu schnell. Langsam ist hier besser.'],
-    images: [],
+    images: ['exercises/Dead_Bug/0.jpg', 'exercises/Dead_Bug/1.jpg'],
     youtubeQuery: 'Dead Bug Übung richtige Ausführung',
   },
 
@@ -304,7 +318,7 @@ export const EXERCISES: Exercise[] = [
       'Ellbogen zeigen weit zur Seite.',
       'Nur halbe Bewegung.',
     ],
-    images: [],
+    images: ['exercises/Incline_Push-Up/0.jpg', 'exercises/Incline_Push-Up/1.jpg'],
     youtubeQuery: 'Schräge Liegestütze Incline Push Up richtige Ausführung',
   },
   {
@@ -321,7 +335,7 @@ export const EXERCISES: Exercise[] = [
       'Halte oben 1 Sekunde und senke sie langsam ab.',
     ],
     mistakes: ['Brust hebt sich von der Lehne ab.', 'Schultern ziehen zu den Ohren.'],
-    images: [],
+    images: ['exercises/Dumbbell_Incline_Row/0.jpg', 'exercises/Dumbbell_Incline_Row/1.jpg'],
     youtubeQuery: yt('Brustgestütztes Rudern'),
   },
   {
@@ -341,7 +355,10 @@ export const EXERCISES: Exercise[] = [
       'Ellbogen beugen und strecken. Der Winkel bleibt gleich.',
       'Hohlkreuz.',
     ],
-    images: [],
+    images: [
+      'exercises/Bent-Arm_Dumbbell_Pullover/0.jpg',
+      'exercises/Bent-Arm_Dumbbell_Pullover/1.jpg',
+    ],
     youtubeQuery: yt('Pullover'),
   },
   {
@@ -360,7 +377,7 @@ export const EXERCISES: Exercise[] = [
       'Hohlkreuz, Rücken löst sich von der Lehne.',
       'Die Drehung passiert erst oben statt während der Bewegung.',
     ],
-    images: [],
+    images: ['exercises/Arnold_Dumbbell_Press/0.jpg', 'exercises/Arnold_Dumbbell_Press/1.jpg'],
     youtubeQuery: 'Arnold Press richtige Ausführung',
   },
   {
@@ -380,7 +397,7 @@ export const EXERCISES: Exercise[] = [
       'Zu schweres Gewicht und Schwung.',
       'Arme beugen und rudern statt seitlich zu heben.',
     ],
-    images: [],
+    images: ['exercises/Reverse_Flyes/0.jpg', 'exercises/Reverse_Flyes/1.jpg'],
     youtubeQuery: yt('Reverse Flys'),
   },
   {
@@ -396,7 +413,7 @@ export const EXERCISES: Exercise[] = [
       'Senke sie in 3 Sekunden ab.',
     ],
     mistakes: ['Oberkörper schwingt mit.', 'Handgelenke knicken ab.'],
-    images: [],
+    images: ['exercises/Hammer_Curls/0.jpg', 'exercises/Hammer_Curls/1.jpg'],
     youtubeQuery: yt('Hammer Curls'),
   },
   {
@@ -412,7 +429,10 @@ export const EXERCISES: Exercise[] = [
       'Streck die Arme wieder, nur die Unterarme bewegen sich.',
     ],
     mistakes: ['Oberarme kippen nach hinten oder vorne.', 'Ellbogen gehen weit nach außen.'],
-    images: [],
+    images: [
+      'exercises/Lying_Dumbbell_Tricep_Extension/0.jpg',
+      'exercises/Lying_Dumbbell_Tricep_Extension/1.jpg',
+    ],
     youtubeQuery: yt('Liegendes Trizepsdrücken'),
   },
 
@@ -434,7 +454,7 @@ export const EXERCISES: Exercise[] = [
       'Hohlkreuz beim Drücken über den Kopf.',
       'Pause zwischen Kniebeuge und Drücken. Die Bewegung soll fließen.',
     ],
-    images: [],
+    images: ['exercises/Kettlebell_Thruster/0.jpg', 'exercises/Kettlebell_Thruster/1.jpg'],
     youtubeQuery: yt('Thruster'),
   },
   {
@@ -454,7 +474,7 @@ export const EXERCISES: Exercise[] = [
       'Schritt zu kurz, das vordere Knie schiebt weit über die Zehen.',
       'Oberkörper kippt nach vorne.',
     ],
-    images: [],
+    images: ['exercises/Dumbbell_Rear_Lunge/0.jpg', 'exercises/Dumbbell_Rear_Lunge/1.jpg'],
     youtubeQuery: yt('Ausfallschritte rückwärts'),
   },
   {
@@ -471,7 +491,10 @@ export const EXERCISES: Exercise[] = [
       'Die Hüfte bleibt gerade. Komm langsam wieder hoch.',
     ],
     mistakes: ['Hüfte dreht zur Seite auf.', 'Runder Rücken.'],
-    images: [],
+    images: [
+      'exercises/Kettlebell_One-Legged_Deadlift/0.jpg',
+      'exercises/Kettlebell_One-Legged_Deadlift/1.jpg',
+    ],
     youtubeQuery: yt('Einbeiniges Kreuzheben'),
   },
   {
@@ -487,7 +510,7 @@ export const EXERCISES: Exercise[] = [
       'Halte unten 1 Sekunde und drück dich hoch.',
     ],
     mistakes: ['Knie knicken nach innen.', 'Oberkörper kippt nach vorne.'],
-    images: [],
+    images: ['exercises/Plie_Dumbbell_Squat/0.jpg', 'exercises/Plie_Dumbbell_Squat/1.jpg'],
     youtubeQuery: yt('Sumo Kniebeuge'),
   },
   {
@@ -503,7 +526,10 @@ export const EXERCISES: Exercise[] = [
       'Senke die Fersen langsam ganz ab.',
     ],
     mistakes: ['Nur halbe Bewegung.', 'Wippen statt halten.'],
-    images: [],
+    images: [
+      'exercises/Standing_Dumbbell_Calf_Raise/0.jpg',
+      'exercises/Standing_Dumbbell_Calf_Raise/1.jpg',
+    ],
     youtubeQuery: yt('Wadenheben'),
   },
   {
@@ -520,7 +546,7 @@ export const EXERCISES: Exercise[] = [
       'Senke die Beine langsam ab, ohne Schwung.',
     ],
     mistakes: ['Beine schwingen statt das Becken einzurollen.', 'Zu schnell absenken.'],
-    images: [],
+    images: ['exercises/Reverse_Crunch/0.jpg', 'exercises/Reverse_Crunch/1.jpg'],
     youtubeQuery: 'Reverse Crunch richtige Ausführung',
   },
   {
@@ -536,7 +562,7 @@ export const EXERCISES: Exercise[] = [
       'Halte die Position und atme ruhig weiter. Dann die andere Seite.',
     ],
     mistakes: ['Hüfte sinkt ab.', 'Oberkörper kippt nach vorne oder hinten.'],
-    images: [],
+    images: ['exercises/Side_Bridge/0.jpg', 'exercises/Side_Bridge/1.jpg'],
     youtubeQuery: 'Seitstütz Side Plank richtige Ausführung',
   },
 ];

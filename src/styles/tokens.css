@@ -23,6 +23,8 @@
   --color-danger-soft: #fdecea;
   --color-focus: #2f6b4f;
   --color-scrim: rgb(9 9 11 / 0.4);
+  /* Übungsbilder haben einen weißen Hintergrund, in beiden Modi */
+  --color-image-bg: #ffffff;
 
   /* Schrift */
   --font-sans:

@@ -1,0 +1,72 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-text-3);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.statusDone {
+  color: var(--color-accent-text);
+  font-weight: var(--weight-medium);
+}
+
+.dayBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  line-height: 1.1;
+}
+
+.dayBoxToday {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.dayShort {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+}
+
+.dayNum {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.dayBoxToday .dayNum {
+  color: inherit;
+}
+
+.hint {
+  color: var(--color-text-3);
+  font-size: var(--text-sm);
+  margin-top: var(--space-4);
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-2);
+  color: var(--color-text-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.actions {
+  margin-top: var(--space-6);
+}
+
+.description {
+  color: var(--color-text-2);
+}
